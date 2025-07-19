@@ -65,13 +65,13 @@ class Program
         Console.Clear();
         if (timeUp)
         {
-            Console.WriteLine("⏰ Time's up! Better luck next time.");
+            Console.WriteLine(" Time's up! Better luck next time.");
             Console.WriteLine($"Scripture: {scripture.GetOriginalText()}");
         }
         else
         {
             Console.WriteLine(scripture.GetDisplayText());
-            Console.WriteLine("\n🎉 Memorization complete!");
+            Console.WriteLine("\n Memorization complete!");
         }
     }
 
@@ -91,7 +91,7 @@ class Program
 
         if (File.Exists(filePath))
         {
-            string[] lines = File.ReadAllLines(filePath);
+            string[] lines = File.ReadAllLines("scriptures.txt");
             foreach (string line in lines)
             {
                 if (!string.IsNullOrWhiteSpace(line))
