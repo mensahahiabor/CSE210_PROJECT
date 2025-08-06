@@ -14,6 +14,12 @@ public class Customer
         return address.IsInUSA();
     }
 
+    // Add this method since your code calls LivesInUSA()
+    public bool LivesInUSA()
+    {
+        return IsInUSA(); // Just call your existing method
+    }
+
     public string GetName()
     {
         return name;
@@ -22,5 +28,11 @@ public class Customer
     public string GetShippingAddress()
     {
         return address.GetFullAddress();
+    }
+
+    // Add this method since your code calls GetAddress()
+    public Address GetAddress()
+    {
+        return address;
     }
 }

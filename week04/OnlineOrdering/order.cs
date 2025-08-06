@@ -41,8 +41,15 @@ public class Order
             productTotal += product.GetTotalCost();
         }
 
-        double shippingCost = _customer.LivesInUSA() ? 5.0 : 35.0;
+        // Fixed: Use IsInUSA() instead of LivesInUSA()
+        double shippingCost = _customer.IsInUSA() ? 5.0 : 35.0;
         return productTotal + shippingCost;
+    }
+
+    // Add this method since Program.cs calls GetTotalPrice()
+    public double GetTotalPrice()
+    {
+        return CalculateTotalCost();
     }
 
     public string GetPackingLabel()
@@ -66,7 +73,8 @@ public class Order
         shippingLabel.AppendLine("===============");
         shippingLabel.AppendLine($"Customer: {_customer.GetName()}");
         shippingLabel.AppendLine("Address:");
-        shippingLabel.AppendLine(_customer.GetAddress().GetFullAddress());
+        // Fixed: Use GetShippingAddress() instead of GetAddress().GetFullAddress()
+        shippingLabel.AppendLine(_customer.GetShippingAddress());
         
         return shippingLabel.ToString();
     }

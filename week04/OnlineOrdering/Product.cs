@@ -22,4 +22,15 @@ public class Product
     {
         return $"{productName} (ID: {productId})";
     }
+
+    // Add these missing methods that Order class needs
+    public string GetName()
+    {
+        return productName;
+    }
+
+    public string GetProductId()
+    {
+        return productId;
+    }
 }
